@@ -1,0 +1,25 @@
+{
+  "name": "stackadapt",
+  "version": "1.0.0",
+  "description": "Assignment for StackAdapt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run": "cypress run — env allure=true || allure generate",
+    "clean:folders": "rm -R -f allure-report/* && rm -R -f allure-results/*",
+    "allure:report": "yarn run allure generate allure-results — clean -o allure-report && allure open allure-report",
+    "beforetest": "npm run clean:folders",
+    "tests": "npm run cy:run || npm run aftertest",
+    "aftertest": "npm run allure:report"
+  },
+  "author": "Sivaram Prasad Pinninti",
+  "license": "ISC",
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.40.0",
+    "cypress": "^12.17.3",
+    "cypress-xpath": "^2.0.1",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0"
+  }
+}
